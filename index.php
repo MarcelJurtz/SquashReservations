@@ -1,14 +1,26 @@
 <?php
-	include('modules/calendar.php');
+	include('modules/calendar.inc.php');
 
-	include('modules/header.html');
-	print(getDateHeader(1));
-	drawCalendar(30);
+	include('modules/header.inc.html');
 
-	function getDateHeader($weeks) {
-		$today = new DateTime();
-		$nextWeek = new DateTime();
-		$nextWeek->add(new DateInterval('P7D'));
-		return ($today->format('d.m.Y') . " - " . $nextWeek->format('d.m.Y'));
+	$daysDifference = 7;
+	$today = getMinDate();
+	$nextWeek = getMaxDate($today, $daysDifference);
+
+	print(getDateHeader($today, $nextWeek));
+	drawCalendar(10, 20, 30);
+
+	function getDateHeader($min, $max) {
+		return ($min->format('d.m.Y') . " - " . $max->format('d.m.Y'));
+	}
+
+	function getMinDate() {
+		return new DateTime();
+	}
+
+	function getMaxDate($minDate, $days) {
+		$date = new DateTime();
+		$date->add(new DateInterval('P'.$days.'D'));
+		return $date;
 	}
 ?>

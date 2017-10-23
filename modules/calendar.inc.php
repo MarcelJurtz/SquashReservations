@@ -23,13 +23,13 @@
 			$day6->add(new DateInterval('P6D'));
 
 			$currentWeekItems = array(
-  				new day($day0),
-  				new day($day1),
-  				new day($day2),
-  				new day($day3),
-  				new day($day4),
-  				new day($day5),
-  				new day($day6)
+  				new Day($day0),
+  				new Day($day1),
+  				new Day($day2),
+  				new Day($day3),
+  				new Day($day4),
+  				new Day($day5),
+  				new Day($day6)
 			);
 
 			echo '<table>';
